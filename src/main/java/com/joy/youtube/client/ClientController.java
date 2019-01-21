@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.joy.youtube.model.YoutubeVO;
+import com.joy.youtube.model.boardVO;
 
 @Controller
 @RequestMapping("client") //슬래쉬 넣을필요 없음
@@ -39,6 +40,14 @@ public class ClientController {
 		System.out.println("playVideo title : " + vo.getY_title());
 		m.addAttribute("vo",vo);
 		return "client/playVideo";
+	}
+	
+	@RequestMapping("board1")
+	public String getBoardList1(Model model) {
+		List<boardVO>  list = service.getBoardList1();
+		model.addAttribute("list", list);
+		System.out.println(list.get(0));
+		return "board/board1";
 	}
 
 }

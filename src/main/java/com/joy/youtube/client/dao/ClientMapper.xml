@@ -10,4 +10,14 @@
 	<select id="getVideoDetail" resultType="com.joy.youtube.model.YoutubeVO">
 		SELECT y_url, y_title FROM yf_youtube WHERE y_no = #{y_no}
 	</select>
+	
+	<select id="getBoardList1" resultType="com.joy.youtube.model.boardVO">
+		select ROW_NUMBER() OVER (order by pk desc) nb,pk, title, writer, to_char(create_date,'yyyy-mm-dd') as create_date, lookup, RECOMMEND from board1 order by pk desc
+	</select>
+	<insert id="insertBoard1">
+		INSERT INTO board1
+		(pk, title, writer, CREATE_DATE) 
+		VALUES
+		((select max(nvl(pk,0))+1 from board1), '제목2', '글쓴이2', to_char(sysdate, 'yyyy-mm-dd'))
+	</insert>
 </mapper>

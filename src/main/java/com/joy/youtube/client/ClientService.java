@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.joy.youtube.client.dao.ClientMapper;
 import com.joy.youtube.model.YoutubeVO;
+import com.joy.youtube.model.boardVO;
 
 @Service
 public class ClientService {
@@ -20,5 +21,10 @@ public class ClientService {
 	
 	public YoutubeVO getVideoDetail(int y_no) {
 		return mapper.getVideoDetail(y_no);
+	}
+	
+	public List<boardVO> getBoardList1(){
+		
+		return mapper.getBoardList1();
 	}
 }
